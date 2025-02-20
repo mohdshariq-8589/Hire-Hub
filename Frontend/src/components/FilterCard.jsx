@@ -25,9 +25,9 @@ const FilterCard = () => {
     const changeHandler = (value) => {
         setSelectedValue(value);
     }
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(setSearchedQuery(selectedValue));
-    },[selectedValue]);
+    }, [selectedValue]);
     return (
         <div className='w-full bg-white p-3 rounded-md'>
             <h1 className='font-bold text-lg'>Filter Jobs</h1>
