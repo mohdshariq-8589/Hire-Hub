@@ -13,9 +13,6 @@ dotenv.config({});
 
 const app = express();
 
-const __dirname = path.resolve();
-
-
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -28,9 +25,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3000;
-
-
-
+const __dirname = path.resolve();
 
 // api's
 app.use("/api/v1/user", userRoute);
