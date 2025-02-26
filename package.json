@@ -9,8 +9,6 @@
     "start": "node Backend/index.js",
     "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend"
   },
-
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
