@@ -73,5 +73,5 @@ export default {
       },
     },
   },
-  plugins: [(await import("tailwindcss-animate")).default],
+  plugins: [require("tailwindcss-animate")], // Fixed the issue
 };
