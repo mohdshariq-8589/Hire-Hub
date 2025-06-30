@@ -35,7 +35,7 @@ const Footer = () => {
               </svg>
             </a> */}
 
-            <Link to="https://github.com/mohdsha-123">
+            <Link to="https://github.com/mohdshariq-8589">
               <FaGithub className="w-6 h-6 fill-current" />
             </Link>
 
