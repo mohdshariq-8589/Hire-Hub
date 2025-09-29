@@ -18,8 +18,10 @@ const Profile = () => {
   return (
     <div>
       <Navbar />
+
+      {/* Profile Info */}
       <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl my-5 p-4 sm:p-8">
-        <div className="flex flex-col sm:flex-row justify-between gap-4">
+        <div className="flex flex-col sm:flex-row justify-between gap-4 items-start sm:items-center">
           <div className="flex items-center gap-4 flex-wrap">
             <Avatar className="h-24 w-24">
               <AvatarImage
@@ -27,38 +29,41 @@ const Profile = () => {
                 alt="profile"
               />
             </Avatar>
-            <div>
+            <div className="min-w-0">
               <h1 className="font-medium text-xl break-words">
                 {user?.fullname || "Full Name"}
               </h1>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 truncate">
                 {user?.profile?.bio || "No bio available."}
               </p>
             </div>
           </div>
+
           <Button
             onClick={() => setOpen(true)}
-            className="self-start sm:self-center"
+            className="self-start sm:self-center mt-2 sm:mt-0"
             variant="outline"
           >
             <Pen className="w-4 h-4" />
           </Button>
         </div>
 
-        <div className="my-5 space-y-2">
-          <div className="flex items-center gap-3">
-            <Mail className="w-4 h-4" />
+        {/* Contact Info */}
+        <div className="my-5 space-y-2 text-sm">
+          <div className="flex items-center gap-3 flex-wrap">
+            <Mail className="w-4 h-4 flex-shrink-0" />
             <span className="break-all">{user?.email || "NA"}</span>
           </div>
-          <div className="flex items-center gap-3">
-            <Contact className="w-4 h-4" />
+          <div className="flex items-center gap-3 flex-wrap">
+            <Contact className="w-4 h-4 flex-shrink-0" />
             <span>{user?.phoneNumber || "NA"}</span>
           </div>
         </div>
 
+        {/* Skills */}
         <div className="my-5">
-          <h1 className="font-semibold">Skills</h1>
-          <div className="flex flex-wrap items-center gap-2 mt-1">
+          <h1 className="font-semibold mb-1">Skills</h1>
+          <div className="flex flex-wrap items-center gap-2">
             {user?.profile?.skills?.length ? (
               user.profile.skills.map((item, index) => (
                 <Badge key={index}>{item}</Badge>
@@ -69,6 +74,7 @@ const Profile = () => {
           </div>
         </div>
 
+        {/* Resume */}
         <div className="grid w-full max-w-sm items-start gap-1.5">
           <Label className="text-md font-bold">Resume</Label>
           {user?.profile?.resume ? (
@@ -86,7 +92,8 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl p-4 sm:p-6">
+      {/* Applied Jobs */}
+      <div className="max-w-4xl mx-auto bg-white rounded-2xl p-4 sm:p-6 my-5">
         <h1 className="font-bold text-lg mb-4">Applied Jobs</h1>
         <AppliedJobTable />
       </div>
