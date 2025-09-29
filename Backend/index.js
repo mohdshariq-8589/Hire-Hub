@@ -15,31 +15,47 @@ const app = express();
 
 // middleware
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// CORS configuration
+const allowedOrigins = [
+    "http://localhost:5173",             // local frontend
+    "https://hire-hub-alu1.onrender.com" // deployed frontend
+];
+
 const corsOptions = {
-    origin:'https://hire-hub-alu1.onrender.com',
-    credentials:true
-}
+    origin: function(origin, callback){
+        if(!origin) return callback(null, true); // for Postman or curl
+        if(allowedOrigins.indexOf(origin) !== -1){
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+};
 
 app.use(cors(corsOptions));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
-// api's
+// API routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
-app.use(express.static(path.join(__dirname, "/Frontend/dist")))
+// Serve frontend
+app.use(express.static(path.join(__dirname, "/Frontend/dist")));
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
-  });
+});
 
-app.listen(PORT,()=>{
+// Start server
+app.listen(PORT, () => {
     connectDB();
     console.log(`Server running at port ${PORT}`);
-})
+});
