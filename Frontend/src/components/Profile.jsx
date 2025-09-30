@@ -17,8 +17,7 @@ const Profile = () => {
 
   return (
     <div>
-      <Navbar />
-
+    
       {/* Profile Info */}
       <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl my-5 p-4 sm:p-8">
         <div className="flex flex-col sm:flex-row justify-between gap-4 items-start sm:items-center">

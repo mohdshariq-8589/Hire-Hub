@@ -30,7 +30,6 @@ const Jobs = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="max-w-7xl mx-auto mt-5 px-4">
         {/* Toggle button for mobile */}
         <div className="flex justify-end mb-4 md:hidden">
