@@ -86,7 +86,7 @@ const Navbar = () => {
     );
 
   return (
-    <div className="bg-gray-50 shadow-md border border-gray-200">
+    <div className=" fixed top-0 left-0 w-full z-50 bg-gray-50 shadow-md border border-gray-200">
       <div className="flex items-center justify-between mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8">
         <Link to="/">
           <h1 className="text-3xl font-extrabold text-blue-600 tracking-tight">

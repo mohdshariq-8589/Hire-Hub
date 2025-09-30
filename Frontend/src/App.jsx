@@ -22,7 +22,7 @@ function Layout() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-16">
         <Outlet /> {/* Render the matched child route here */}
       </main>
       <Footer />
